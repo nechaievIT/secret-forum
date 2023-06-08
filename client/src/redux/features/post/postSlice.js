@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../../utils/axios";
 
 const initialState = {
@@ -23,10 +23,9 @@ export const createPost = createAsyncThunk(
   }
 );
 
-export const getAllPosts = createAsyncThunk("/post/getAllPosts", async () => {
+export const getAllPosts = createAsyncThunk("post/getAllPosts", async () => {
   try {
     const { data } = await axios.get("/posts");
-
     return data;
   } catch (error) {
     console.log(error);
@@ -43,13 +42,11 @@ export const postSlice = createSlice({
       state.loading = true;
     },
     [createPost.fulfilled]: (state, action) => {
+      console.log(state);
       state.loading = false;
       state.posts.push(action.payload);
-      // state.user = action.payload.user;
-      // state.token = action.payload.token;
     },
-    [createPost.rejected]: (state, action) => {
-      // state.status = action.payload.message;
+    [createPost.rejected]: (state) => {
       state.loading = false;
     },
     // Get All Posts
@@ -60,13 +57,11 @@ export const postSlice = createSlice({
       state.loading = false;
       state.posts = action.payload.posts;
       state.popularPosts = action.payload.popularPosts;
-      // state.user = action.payload.user;
-      // state.token = action.payload.token;
     },
-    [getAllPosts.rejected]: (state, action) => {
-      // state.status = action.payload.message;
+    [getAllPosts.rejected]: (state) => {
       state.loading = false;
     },
+    // Delete Post
   },
 });
 

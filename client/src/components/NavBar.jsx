@@ -33,8 +33,7 @@ function NavBar() {
               className="text-xs text-gray-400 hover:text-white"
               style={({ isActive }) => (isActive ? activeStyles : undefined)}
             >
-              {" "}
-              Главная{" "}
+              Главная
             </NavLink>
           </li>
           <li>
@@ -44,8 +43,7 @@ function NavBar() {
               className="text-xs text-gray-400 hover:text-white"
               style={({ isActive }) => (isActive ? activeStyles : undefined)}
             >
-              {" "}
-              Мои Посты{" "}
+              Мои Посты
             </NavLink>
           </li>
           <li>
@@ -55,8 +53,7 @@ function NavBar() {
               className="text-xs text-gray-400 hover:text-white"
               style={({ isActive }) => (isActive ? activeStyles : undefined)}
             >
-              {" "}
-              Добавить Пост{" "}
+              Добавить Пост
             </NavLink>
           </li>
         </ul>
